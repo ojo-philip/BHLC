@@ -1,0 +1,22 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+<!-- main -->
+  <main>
+    <div class="better-form">
+      <div class="form-group">
+
+        <!-- section-heading -->
+        <div class="section-heading">
+          <h2>Update Profile</h2>
+        </div>
+        <form  method="POST" enctype='multipart/form-data'>
+        {% csrf_token %}
+          {{ form.as_p }}
+        <button type="submit" class="primary-btn">Update</button> 
+        </form>
+      </div>
+  </main>
+  <!-- end main -->
+{% endblock content %}
+  

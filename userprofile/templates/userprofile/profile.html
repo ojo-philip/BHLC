@@ -1,0 +1,41 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+<!-- main -->
+  <main>
+    <div class="section-container">
+      <!-- section-heading -->
+      <div class="section-heading">
+        <h2>My Profile</h2>
+      </div>
+      <!-- section-heading -->
+      <div class="edit-profile">
+        <a href="{% url 'userprofile:user_profile_update' %}">Edit Profile Details</a>
+      </div>
+      <div class="profile-detail">
+        <div class="biodata">
+          <p><b>Name:</b> {{user.userprofile.full_name}}</p>
+          <p><b>Age:</b> {{user.userprofile.age}}</p>
+          <p><b>Sex:</b> {{user.userprofile.sex}}</p>
+          <p><b>Address:</b> {{user.userprofile.address}}</p>
+          <p><b>Occupation:</b> {{user.userprofile.occupation}}</p>
+          <p><b>Religion:</b> {{user.userprofile.religion}}</p>
+        </div>
+        <div class="clinical_detail"><b>Clinical Details:</b> <span>{{user.clinical_detail.clinical_details|safe}}</span></div>
+      </div>
+      <!-- section-heading -->
+      <div class="section-heading">
+        <h2>Choose the Service you want</h2>
+      </div>
+      <!-- section-heading -->
+      <div class="select-service">
+        <a href="">Consultation</a>
+        <a href="">Home Care</a>
+        <a href="">Join Anonymous Group</a>
+        <a href="">Others</a>
+      </div>
+    </div>
+  </main>
+  <!-- end main -->
+{% endblock content %}
+  

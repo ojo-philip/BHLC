@@ -1,0 +1,194 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block banner %}
+  {% include "blog/home_banner.html" %}
+{% endblock banner %}
+{% block content %}
+  <!-- main -->
+  <main>
+    <div class="little-about-us section-container">
+      <p>Health-Care in Nigeria is evolving and at the same time diversifying to meet the needs of patients. A dire patient need in an era of pandemics is reducing number of hospital visits except when necessary.</p>
+      <p>At <b>Best-Life Health Care</b> we make quality healthcare services accessible and affordable from the comfort of your homes and work place. </p>
+    </div>
+    <!-- our service -->
+    <article class="section-container">
+      <!-- section-heading -->
+      <div class="section-heading">
+        <h2>What We Provide</h2>
+      </div>
+      <!-- section-heading -->
+      <div class="our-services">
+        <!-- single service -->
+        <div class="single-service">
+          <div class="service-icon">
+            <i class="fas fa-home"></i>
+          </div>
+          <div class="service-info">
+            <p>Home Medical Consultation </p>
+          </div>
+        </div>
+        <!-- end single service -->
+        <!-- single service -->
+        <div class="single-service">
+          <div class="service-icon">
+            <i class="fas fa-user-nurse"></i>
+          </div>
+          <div class="service-info">
+            <p>Home Nursing Services </p>
+          </div>
+        </div>
+        <!-- end single service -->
+        <!-- single service -->
+        <div class="single-service">
+          <div class="service-icon">
+            <i class="fas fa-user-md"></i>
+          </div>
+          <div class="service-info">
+            <p>Specialist Reviews (Cardiology, Neurology, Endocrinology, Nephrology, Plastic Surgery, Psychiatry)</p>
+          </div>
+        </div>
+        <!-- end single service -->
+        <!-- single service -->
+        <div class="single-service">
+          <div class="service-icon">
+            <i class="fas fa-user-secret"></i>
+          </div>
+          <div class="service-info">
+            <p>Anonymous Groups and Support Cells for persons living with (Downs Syndrome, Sickle Cell Disease, Stroke, Parkinson Disease, Seizure Disorder, Dementia, Cancers)</p>
+          </div>
+        </div>
+        <!-- end single service -->
+        <!-- single service -->
+        <div class="single-service">
+          <div class="service-icon">
+            <i class="fas fa-person"></i>
+          </div>
+          <div class="service-info">
+            <p>Geriatric-need-based care (Elderly persons)</p>
+          </div>
+        </div>
+        <!-- end single service -->
+        <!-- single service -->
+        <div class="single-service">
+          <div class="service-icon">
+            <i class="fas fa-bone"></i>
+          </div>
+          <div class="service-info">
+            <p>Home based Physiotherapy</p>
+          </div>
+        </div>
+        <!-- end single service -->
+      </div>
+      <div class="see-more">
+        <a href="{% url 'blog:about_page' %}">See more services <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </article>
+    <!-- end of our service -->
+    <!-- our target -->
+    <article class="section-container">
+      <!-- section-heading -->
+      <div class="section-heading">
+        <h2>Our Target Persons/Groups</h2>
+      </div>
+      <!-- section-heading -->
+      <div class="target-groups owl-carousel owl-theme">
+        <!-- single target group -->
+        <div class="single-target-group">
+          <div class="single-target-img">
+            <img src="{%static 'blog/images/old.jpg' %}" alt="">
+          </div>
+          <div class="single-target-detail">
+            <p>Elderly</p>
+          </div>
+        </div>
+        <!-- end of single target group -->
+        <!-- single target group -->
+        <div class="single-target-group">
+          <div class="single-target-img">
+            <img src="{%static 'blog/images/hospital.jpg' %}" alt="">
+          </div>
+          <div class="single-target-detail">
+            <p>Post Hospital-discharge Needing Care</p>
+          </div>
+        </div>
+        <!-- end of single target group -->
+        <!-- single target group -->
+        <div class="single-target-group">
+          <div class="single-target-img">
+            <img src="{%static 'blog/images/diabetes 1.jpg' %}" alt="">
+          </div>
+          <div class="single-target-detail">
+            <P>Persons with Chronic Diseases</P>
+          </div>
+        </div>
+        <!-- end of single target group -->
+        <!-- single target group -->
+        <div class="single-target-group">
+          <div class="single-target-img">
+            <img src="{%static 'blog/images/support.jpg' %}" alt="">
+          </div>
+          <div class="single-target-detail">
+            <P>Persons needing Support Groups</P>
+          </div>
+        </div>
+        <!-- end of single target group -->
+        <!-- single target group -->
+        <div class="single-target-group">
+          <div class="single-target-img">
+            <img src="{%static 'blog/images/minor illness.jpg' %}" alt="">
+          </div>
+          <div class="single-target-detail">
+            <P>Persons with minor medical illness</P>
+          </div>
+        </div>
+        <!-- end of single target group -->
+        <!-- single target group -->
+        <div class="single-target-group">
+          <div class="single-target-img">
+            <img src="{%static 'blog/images/rehab.jpg' %}" alt="">
+          </div>
+          <div class="single-target-detail">
+            <P>Persons needing rehabilitation </P>
+          </div>
+        </div>
+        <!-- end of single target group -->
+      </div>
+    </article>
+    <!-- end our target -->
+    <!-- our article -->
+    {% if latest_posts %}
+    <article class="section-container">
+      <!-- section-heading -->
+      <div class="section-heading">
+        <h2>Latest Article from Our Blog</h2>
+      </div>
+      <!-- section-heading -->
+      <div class="articles">
+        {% for post in latest_posts %}
+        <!-- single article -->
+        <div class="single-article" data-aos="fade-down" data-aos-duration="2000">
+          <div class="article-img">
+            <img src="{{post.thumbnail_url}}" alt="{{ post.title }}">
+          </div>
+          <div class="article-date"><i class="fas fa-calendar"></i> {{ post.updated|date:'F d , Y' }}</div>
+          <div class="article-info">
+            <div class="article-heading">
+              <a href="{{ post.get_absolute_url }}"><h3>{{post.title}}</h3></a>
+            </div>
+            <div class="article-brief">
+              {{ post.content|safe|truncatewords:18 }}
+            </div>
+            <div class="read-more-btn">
+              <a href="{{ post.get_absolute_url }}">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <!-- end of single article -->
+        {% endfor %}
+      </div>
+    </article>
+    <!-- end our article -->
+    {% endif %}
+  </main>
+  <!-- end main -->
+{% endblock content %}
